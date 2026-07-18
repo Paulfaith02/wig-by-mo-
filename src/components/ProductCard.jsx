@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faEye, faHeart as heartSolid } from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
-import { formatPrice } from '../data/products'
 
 export default function ProductCard({ product, wished, onWish, onQuick }) {
   return (
@@ -16,9 +15,12 @@ export default function ProductCard({ product, wished, onWish, onQuick }) {
       </div>
       <div className="product-info">
         <div><p>{product.length}</p><h3><Link to={`/product/${product.id}`}>{product.name}</Link></h3></div>
-        <span className="price">{formatPrice(product.price)}</span>
+        <span className="availability-label">Enquire</span>
       </div>
-      <Link className="product-link" to={`/product/${product.id}`}>View details <FontAwesomeIcon icon={faArrowRight} /></Link>
+      <div className="product-card-footer">
+        <span>{product.availability}</span>
+        <Link className="product-link" to={`/product/${product.id}`}>View style <FontAwesomeIcon icon={faArrowRight} /></Link>
+      </div>
     </motion.article>
   )
 }
